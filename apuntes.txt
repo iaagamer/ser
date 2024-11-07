@@ -1,0 +1,26 @@
+instalar:
+ ifupdown
+ ifconfig
+ isc-dhcp-server
+
+carpetas:
+ /etc/default/isc-dhcp-server 
+ /etc/network/interfaces #configurar ip estatica (auto	enp0s3				       cliente(auto enp0s3
+ 						                                      iface	enp0s3 inet static	      		iface enp0s3 inet dhcp)
+	 				                                    	 	address 192.168.222.2
+				                                    			netmask 255.255.255.0
+				                                    			gateway 192.168.222.1
+			                                    				dns-nameservers 1.1.1.1)
+ sudo systemctl restart networking
+
+ /etc/dhcp/dhcpd.conf #configuracion dhcp (descomentar subnet xxxxxx netmask xxxxx{
+ 		                                        					options routers xxxx
+ 				                                        			   ""	subnet mask
+					                                        		   ""	domain-name-servers
+		                                        					   ""	range
+		                                        					}
+
+sudo systemctl restart isc-dhcp-server
+
+dhcpd -t -cf /etc/dhcp/dhcpd.conf
+
