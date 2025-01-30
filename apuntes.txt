@@ -1,26 +1,14 @@
-instalar:
- ifupdown
- ifconfig
- isc-dhcp-server
+ssh-keygen -t rsa
+mkdir .ssh
+cat id_rsa.pub >> authorized_keys
+chmod go-rw authorized_keys
 
-carpetas:
- /etc/default/isc-dhcp-server 
- /etc/network/interfaces #configurar ip estatica (auto	enp0s3				       cliente(auto enp0s3
- 						                                      iface	enp0s3 inet static	      		iface enp0s3 inet dhcp)
-	 				                                    	 	address 192.168.222.2
-				                                    			netmask 255.255.255.0
-				                                    			gateway 192.168.222.1
-			                                    				dns-nameservers 1.1.1.1)
- sudo systemctl restart networking
+vsftp
+/etc/vsftpd.conf
+write_enable=YES.
+allow_writeable_chroot=YES.
+chroot_local_user=YES.
+chroot_list
 
- /etc/dhcp/dhcpd.conf #configuracion dhcp (descomentar subnet xxxxxx netmask xxxxx{
- 		                                        					options routers xxxx
- 				                                        			   ""	subnet mask
-					                                        		   ""	domain-name-servers
-		                                        					   ""	range
-		                                        					}
-
-sudo systemctl restart isc-dhcp-server
-
-dhcpd -t -cf /etc/dhcp/dhcpd.conf
-
+pwd
+cd
