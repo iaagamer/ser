@@ -1,14 +1,28 @@
-ssh-keygen -t rsa
-mkdir .ssh
-cat id_rsa.pub >> authorized_keys
-chmod go-rw authorized_keys
+adaptador puente
+bind9
+resovconf
+ifupdown
+ /etc/network/interfaces #configurar ip estatica ( auto enp0s3
+                                                   iface enp0s3 inet static
+                                                       address 192.168.222.2
+                                                       netmask 255.255.255.0
+                                                       gateway 192.168.222.1
+                                                       dns-nameserver 192.168.222.2
+                                                       dns-search redesplus.es
+systemctl restart nertworking
+cat /etc/resolv.conf
+resolvconf -u (en el caso que este mal)
+/etc/nsswitch.conf (hosts: dns files)
 
-vsftp
-/etc/vsftpd.conf
-write_enable=YES.
-allow_writeable_chroot=YES.
-chroot_local_user=YES.
-chroot_list
+/etc/bind/named.conf.local
+zone "redesplus.es" {
+  type master;
+  file "/etc/bind/db.redesplus.es";
+};
 
-pwd
-cd
+zone "222.168.192.in-addr.arpa" {
+  type master;
+  file "/etc/bind/db.222.168.192";
+};
+
+cp /etc/bind/db.local /etc/bind/db.redesplus.es
