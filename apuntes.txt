@@ -1,8 +1,6 @@
 adaptador puente
-bind9
-resovconf
-ifupdown
- /etc/network/interfaces #configurar ip estatica ( auto enp0s3
+bind9 resovconf ifupdown
+/etc/network/interfaces #configurar ip estatica ( auto enp0s3
                                                    iface enp0s3 inet static
                                                        address 192.168.222.2
                                                        netmask 255.255.255.0
@@ -26,3 +24,7 @@ zone "222.168.192.in-addr.arpa" {
 };
 
 cp /etc/bind/db.local /etc/bind/db.redesplus.es
+
+named-checkconf /etc/bind/named.conf.local
+named-checkzone redesplus.es /etc/bind/db.redesplus.es
+named-checkzone 222.168.192.in-addr.arpa /etc/bind/db.222.168.192
